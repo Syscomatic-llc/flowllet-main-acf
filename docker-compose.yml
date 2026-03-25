@@ -1,0 +1,9 @@
+services:
+  flowllet-landing:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: flowllet-landing
+    ports:
+      - "5050:80"
+    restart: unless-stopped
