@@ -87,8 +87,9 @@ const MultiWallet = () => {
           >
             {/* Diagonal Ribbon Wrapper - Postioned beneath the badge */}
             <div 
-              className="relative z-20 pointer-events-auto cursor-pointer"
+              className="relative z-20 pointer-events-auto cursor-pointer touch-manipulation flex flex-col items-center gap-6 sm:gap-8"
               onMouseEnter={() => setIsLocked(false)}
+              onClick={() => setIsLocked(false)}
             >
               {/* Outer glow effect */}
               <motion.div
@@ -98,10 +99,11 @@ const MultiWallet = () => {
               />
 
               <motion.div
-                initial={{ scale: 0.8, opacity: 0, rotate: -5 }}
-                animate={{ scale: 1, opacity: 1, rotate: -5 }}
-                whileHover={{ scale: 1.08, rotate: 0 }}
-                className="relative bg-gradient-to-br from-[#5509D9] via-[#7134F1] to-[#380791] shadow-[0_20px_60px_rgba(85,9,217,0.5)] px-16 py-4 rounded-2xl border-2 border-white/30 overflow-hidden group/ribbon"
+                initial={{ scale: 0.8, opacity: 0, rotate: -3 }}
+                animate={{ scale: 1, opacity: 1, rotate: -3 }}
+                whileHover={{ scale: 1.05, rotate: 0 }}
+                whileTap={{ scale: 0.95 }}
+                className="relative bg-gradient-to-br from-[#5509D9] via-[#7134F1] to-[#380791] shadow-[0_20px_60px_rgba(85,9,217,0.4)] px-8 sm:px-16 py-3 sm:py-4 rounded-xl sm:rounded-2xl border-2 border-white/30 overflow-hidden group/ribbon mx-4 sm:mx-0"
               >
                 {/* Shiny effect on ribbon */}
                 <motion.div 
@@ -110,12 +112,12 @@ const MultiWallet = () => {
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12"
                 />
                 
-                <span className="relative z-10 flex items-center gap-4 text-white">
-                  <span className="flex h-3 w-3 rounded-full bg-white animate-pulse" />
-                  <span className="font-heading font-black text-2xl sm:text-3xl tracking-[0.15em] uppercase drop-shadow-lg">
+                <span className="relative z-10 flex items-center gap-3 sm:gap-4 text-white">
+                  <span className="flex h-2 w-2 sm:h-3 sm:w-3 rounded-full bg-white animate-pulse" />
+                  <span className="font-heading font-black text-xl sm:text-3xl tracking-[0.1em] sm:tracking-[0.15em] uppercase drop-shadow-lg whitespace-nowrap">
                     Coming Soon
                   </span>
-                  <span className="flex h-3 w-3 rounded-full bg-white animate-pulse" />
+                  <span className="flex h-2 w-2 sm:h-3 sm:w-3 rounded-full bg-white animate-pulse" />
                 </span>
                 
                 {/* Micro-sparkle icons */}
@@ -127,9 +129,10 @@ const MultiWallet = () => {
               <motion.div 
                 animate={{ y: [0, 5, 0], opacity: [0.6, 1, 0.6] }}
                 transition={{ duration: 3, repeat: Infinity }}
-                className="absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap text-sm font-bold text-[#5509D9] uppercase tracking-widest px-4 py-1 rounded-full bg-white/40 backdrop-blur-sm border border-[#5509D9]/20"
+                className="whitespace-nowrap text-[10px] sm:text-sm font-bold text-[#5509D9] uppercase tracking-widest px-4 py-1.5 rounded-full bg-white/60 backdrop-blur-md border border-[#5509D9]/20 shadow-sm"
               >
-                Hover to Preview
+                <span className="hidden sm:inline">Hover to Preview</span>
+                <span className="sm:hidden">Tap to Preview</span>
               </motion.div>
             </div>
           </motion.div>
