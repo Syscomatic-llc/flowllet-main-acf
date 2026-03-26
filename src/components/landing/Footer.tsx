@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { 
-  Twitter, 
-  Github, 
   Linkedin, 
+  X,
+  MessageCircle,
+  Instagram,
+  Facebook,
   Mail, 
   ChevronUp, 
   ArrowRight,
@@ -46,9 +48,12 @@ const Footer = () => {
     {
       title: "Social",
       links: [
-        { label: "Twitter", href: "https://twitter.com", icon: Twitter },
-        { label: "GitHub", href: "https://github.com", icon: Github },
-        { label: "LinkedIn", href: "https://linkedin.com", icon: Linkedin },
+        { label: "LinkedIn", href: "https://www.linkedin.com/company/syscomatic/", icon: Linkedin },
+        { label: "X", href: "https://x.com", icon: X },
+        { label: "WhatsApp", href: "https://whatsapp.com", icon: MessageCircle },
+        { label: "Instagram", href: "https://instagram.com", icon: Instagram },
+        { label: "Facebook", href: "https://facebook.com", icon: Facebook },
+        { label: "Syscomatic", href: "https://syscomatic.com", icon: Globe },
       ]
     }
   ];

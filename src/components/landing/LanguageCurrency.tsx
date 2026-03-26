@@ -35,7 +35,7 @@ const LanguageCurrency = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section ref={ref} className="py-24 lg:py-32 relative overflow-hidden">
+    <section ref={ref} className="py-16 lg:py-32 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 bg-[#f9faff] pointer-events-none" />
       <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none" 

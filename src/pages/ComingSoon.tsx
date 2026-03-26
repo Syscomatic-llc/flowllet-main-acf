@@ -9,7 +9,7 @@ import React from "react";
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 32 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] as any },
+  transition: { duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
 });
 
 /* ─── Email subscription form ─── */
@@ -141,6 +141,18 @@ const ComingSoon = () => {
       <Helmet>
         <title>Coming Soon | Flowllet Web</title>
         <meta name="description" content="Flowllet Web is under development. Be the first to know when we launch." />
+        <link rel="canonical" href="https://flowllet.com/web" />
+
+        <meta property="og:title" content="Flowllet Web – Coming Soon" />
+        <meta property="og:description" content="We're bringing Flowllet to the web. Track expenses, income, and loans right from your browser." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://flowllet.com/web" />
+        <meta property="og:image" content="https://flowllet.com/og-image.png" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Flowllet Web – Coming Soon" />
+        <meta name="twitter:description" content="Be the first to know when Flowllet Web launches." />
+        <meta name="twitter:image" content="https://flowllet.com/og-image.png" />
       </Helmet>
       <Navbar />
       <main className="min-h-screen flex flex-col pt-20 relative overflow-hidden">

@@ -45,6 +45,24 @@ const Index = () => {
   return (
     <>
       <Helmet>
+        <title>Flowllet – Track Your Money Flow | Free Personal Finance App</title>
+        <meta name="description" content="Flowllet is a free, lightweight personal finance app. Track expenses, income, loans, and wallets across multiple currencies. Download now for Android & iOS." />
+        <meta name="author" content="Syscomatic LLC" />
+        <meta name="keywords" content="personal finance app, expense tracker, income tracker, loan management, budget app, free finance app, Flowllet" />
+        <link rel="canonical" href="https://flowllet.com" />
+
+        <meta property="og:title" content="Flowllet – Track Your Money Flow" />
+        <meta property="og:description" content="Free personal finance app to track expenses, income, loans, and wallets. Lightweight, secure, and available in 4 languages." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://flowllet.com" />
+        <meta property="og:image" content="https://flowllet.com/og-image.png" />
+        <meta property="og:site_name" content="Flowllet" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Flowllet – Track Your Money Flow" />
+        <meta name="twitter:description" content="Free personal finance app. Track expenses, income, loans & wallets." />
+        <meta name="twitter:image" content="https://flowllet.com/og-image.png" />
+
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(appSchema)}</script>
       </Helmet>

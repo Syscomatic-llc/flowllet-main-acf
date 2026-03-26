@@ -43,7 +43,7 @@ const AboutSyscomatic = () => {
   ];
 
   return (
-    <section ref={ref} className="py-24 lg:py-32 bg-[#fcfaff] relative overflow-hidden">
+    <section ref={ref} className="py-16 lg:py-32 bg-[#fcfaff] relative overflow-hidden">
       {/* Decorative Branding Silhouette */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-[0.03] pointer-events-none select-none">
         <svg viewBox="0 0 100 100" className="w-full h-full fill-current text-primary">

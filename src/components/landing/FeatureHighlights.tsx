@@ -12,7 +12,7 @@ const features = [
     id: "expense",
     icon: ArrowUpCircle,
     title: "Expense Tracking",
-    tagline: "Every rupee, every dollar, accounted for.",
+    tagline: "Every single expense, fully accounted for.",
     description:
       "Record and categorize every expense by amount, category, wallet, date, and notes. Search, filter, and audit your spending effortlessly.",
     color: "#f43f5e",
@@ -138,20 +138,20 @@ const FeatureHighlights = () => {
   const Icon = feat.icon;
 
   return (
-    <section id="features" ref={ref} className="py-24 lg:py-32 relative overflow-hidden">
+    <section id="features" ref={ref} className="py-16 lg:py-32 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#f8f5ff] via-white to-[#f0f4ff] pointer-events-none" />
       <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-[#7134F1]/8 blur-[140px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-[#5509D9]/5 blur-[100px] pointer-events-none" />
 
-      <div className="container mx-auto px-6 md:px-12 lg:px-20 xl:px-32 relative z-10">
+      <div className="container mx-auto px-6 md:px-12 lg:px-20 xl:px-32 relative z-10 flex flex-col">
 
         {/* ── Header ── */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-2xl mx-auto mb-14"
+          className="text-center max-w-2xl mx-auto mb-14 order-1"
         >
           {/* Glowing badge */}
           <div className="flex justify-center mb-5">
@@ -179,12 +179,16 @@ const FeatureHighlights = () => {
         </motion.div>
 
         {/* ── Tab pills ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.55, delay: 0.1 }}
-          className="flex flex-wrap justify-center gap-2.5 mb-12"
-        >
+        <div className="relative order-3 lg:order-2 mb-4 lg:mb-12 group/tabs">
+          {/* Subtle overflow indicator for mobile */}
+          <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#f8f5ff] to-transparent z-20 pointer-events-none lg:hidden" />
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.55, delay: 0.1 }}
+            className="flex flex-nowrap lg:flex-wrap lg:justify-center gap-2.5 overflow-x-auto lg:overflow-x-visible hide-scrollbar pb-4 lg:pb-0 px-1"
+          >
           {features.map((f, i) => {
             const FIcon = f.icon;
             const isActive = i === active;
@@ -192,7 +196,7 @@ const FeatureHighlights = () => {
               <button
                 key={f.id}
                 onClick={() => setActive(i)}
-                className={`relative inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300 border ${
+                className={`relative inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300 border shrink-0 ${
                   isActive
                     ? "text-white border-transparent shadow-lg scale-105"
                     : "bg-white text-gray-500 border-gray-200 hover:border-gray-300 hover:text-gray-800 hover:shadow-sm"
@@ -214,7 +218,8 @@ const FeatureHighlights = () => {
               </button>
             );
           })}
-        </motion.div>
+          </motion.div>
+        </div>
 
         {/* ── Active Feature Panel ── */}
         <AnimatePresence mode="wait">
@@ -224,7 +229,7 @@ const FeatureHighlights = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-            className="grid lg:grid-cols-2 gap-6 items-stretch"
+            className="grid lg:grid-cols-2 gap-6 items-stretch order-2 lg:order-3 mb-10 lg:mb-0"
           >
             {/* LEFT — description + highlights */}
             <div className="rounded-3xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300 p-8 md:p-10 flex flex-col justify-between relative overflow-hidden group">

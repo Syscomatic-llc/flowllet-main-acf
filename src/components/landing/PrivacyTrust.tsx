@@ -44,7 +44,7 @@ const PrivacyTrust = () => {
   ];
 
   return (
-    <section id="privacy" ref={ref} className="py-24 lg:py-32 bg-white relative overflow-hidden">
+    <section id="privacy" ref={ref} className="py-16 lg:py-32 bg-white relative overflow-hidden">
       {/* Background soft glow */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
       
@@ -173,3 +173,4 @@ const PrivacyTrust = () => {
 };
 
 export default PrivacyTrust;
+

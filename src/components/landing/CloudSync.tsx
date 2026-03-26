@@ -39,7 +39,7 @@ const CloudSync = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section ref={ref} className="py-24 lg:py-32 relative overflow-hidden">
+    <section ref={ref} className="py-16 lg:py-32 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#f8f5ff] via-white to-[#f0f9ff] pointer-events-none" />
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#0ea5e9]/5 rounded-full blur-[120px] pointer-events-none" />

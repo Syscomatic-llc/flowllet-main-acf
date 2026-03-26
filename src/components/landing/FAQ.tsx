@@ -8,7 +8,7 @@ import {
   MessageCircle, 
   Mail, 
   ChevronRight,
-  Heart
+  Lightbulb
 } from "lucide-react";
 
 const highlightFlowllet = (text: string) => {
@@ -146,7 +146,7 @@ const FAQ = () => {
             </Accordion>
 
             <div className="mt-8 flex items-center gap-4 p-6 rounded-3xl bg-slate-50 border border-dashed border-slate-200 text-slate-500">
-               <Heart className="w-5 h-5 text-primary shrink-0" />
+               <Lightbulb className="w-5 h-5 text-primary shrink-0" />
                <p className="text-sm font-medium"><span className="font-flowllet">Flowllet</span> is updated regularly with new features based on community feedback. Your question could be our next feature!</p>
             </div>
           </motion.div>

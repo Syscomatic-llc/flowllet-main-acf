@@ -46,7 +46,7 @@ const LoanTracking = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section ref={ref} className="py-24 lg:py-32 relative overflow-hidden">
+    <section ref={ref} className="py-16 lg:py-32 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-white via-[#faf8ff] to-white pointer-events-none" />
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-[#5509D9]/5 rounded-full blur-[120px] pointer-events-none" />
@@ -104,13 +104,13 @@ const LoanTracking = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.8 }}
-              className="mt-10 flex gap-8"
+              className="mt-10 flex flex-row flex-wrap justify-center lg:justify-start gap-8 md:gap-12"
             >
               {[
                 { label: "Avg. repaid", value: "94%", sub: "on time" },
                 { label: "Auto reminders", value: "3×", sub: "before due" },
               ].map((s) => (
-                <div key={s.label} className="flex flex-col">
+                <div key={s.label} className="flex flex-col items-center lg:items-start text-center lg:text-left">
                   <div
                     className="font-heading font-black text-3xl bg-clip-text text-transparent"
                     style={{ backgroundImage: "linear-gradient(135deg, #5509D9, #7134F1)" }}

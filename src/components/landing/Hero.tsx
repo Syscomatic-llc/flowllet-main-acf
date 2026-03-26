@@ -6,7 +6,7 @@ import { ArrowRight, Zap, Globe, TrendingUp, CreditCard, Wallet, Banknote, Targe
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 32 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] as any },
+  transition: { duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
 });
 
 const stat = (value: string, label: string) => ({ value, label });
@@ -24,35 +24,35 @@ const CARDS = [
     label: "Monthly Savings",
     value: "+$842",
     color: "from-[#5509D9] to-[#7134F1]",
-    pos: "-top-6 -left-16 sm:-top-10 sm:-left-20",
+    pos: "top-[18%] -left-10 sm:-top-10 sm:-left-20",
   },
   {
     icon: Banknote,
     label: "Active Loans",
     value: "$1,850",
     color: "from-blue-500 to-indigo-400",
-    pos: "-top-10 -right-12 sm:-top-12 sm:-right-16",
+    pos: "-top-8 -right-4 sm:-top-12 sm:-right-16",
   },
   {
     icon: Wallet,
     label: "Wallet Balance",
     value: "$3,580",
     color: "from-orange-400 to-rose-400",
-    pos: "top-1/4 -left-24 sm:top-1/4 sm:-left-32",
+    pos: "top-[48%] -left-14 sm:top-1/4 sm:-left-32",
   },
   {
     icon: CreditCard,
     label: "Total Expenses",
     value: "$1,240",
     color: "from-emerald-500 to-teal-400",
-    pos: "top-1/2 -right-24 sm:top-1/2 sm:-right-32",
+    pos: "top-[78%] -right-12 sm:top-1/2 sm:-right-32",
   },
   {
     icon: Target,
     label: "Savings Goal",
     value: "75%",
     color: "from-purple-500 to-pink-400",
-    pos: "bottom-6 -left-16 sm:bottom-8 sm:-left-24",
+    pos: "hidden sm:block bottom-6 -left-6 sm:bottom-8 sm:-left-24",
   },
 ];
 
@@ -85,7 +85,7 @@ const Hero = () => {
             <motion.div {...fadeUp(0)}>
               <span className="inline-flex items-center gap-2 rounded-full border border-[#7134F1]/25 bg-white/70 backdrop-blur px-3 py-1 sm:px-4 sm:py-1.5 text-[13px] sm:text-sm font-medium text-[#5509D9] shadow-sm mb-6 sm:mb-7">
                 <span className="flex h-2 w-2 rounded-full bg-[#7134F1] animate-pulse" />
-                100% Free, No Subscriptions
+                ✨ Free Forever · Pro Plans Coming
               </span>
             </motion.div>
 
@@ -110,12 +110,12 @@ const Hero = () => {
               className="mt-6 text-lg sm:text-xl text-gray-500 leading-relaxed"
             >
               <span className="font-flowllet">Flowllet</span> unifies expenses, income, loans, and wallets in one
-              beautifully minimal app. Lightweight, secure, and completely free,
-              always.
+              beautifully minimal app. Lightweight, secure, and free at its core
+              — with optional pro plans on the horizon.
             </motion.p>
 
             {/* Trust pills */}
-            <motion.div {...fadeUp(0.22)} className="flex flex-wrap gap-2.5 mt-8">
+            <motion.div {...fadeUp(0.22)} className="flex flex-nowrap gap-2 mt-8 overflow-x-auto hide-scrollbar -mx-1 px-1 pb-1">
               {[
                 { icon: Zap, label: "Instant sync" },
                 { icon: Globe, label: "Multi-currency" },
@@ -123,9 +123,9 @@ const Hero = () => {
               ].map(({ icon: Icon, label }) => (
                 <span
                   key={label}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-white border border-gray-200 px-3.5 py-1.5 text-xs font-medium text-gray-600 shadow-sm"
+                  className="inline-flex items-center justify-center gap-1.5 rounded-full bg-white border border-gray-200 px-2.5 py-1.5 text-[11px] sm:text-xs font-medium text-gray-600 shadow-sm whitespace-nowrap"
                 >
-                  <Icon className="w-4 h-4 text-[#7134F1]" />
+                  <Icon className="w-3.5 h-3.5 text-[#7134F1] shrink-0" />
                   {label}
                 </span>
               ))}
@@ -134,23 +134,21 @@ const Hero = () => {
             {/* CTA buttons */}
             <motion.div
               {...fadeUp(0.28)}
-              className="flex flex-col sm:flex-row gap-4 mt-10"
+              className="flex flex-row items-center justify-center gap-3 mt-10"
             >
               <Button
                 asChild
-                size="lg"
-                className="rounded-full px-8 py-6 text-base font-semibold text-white shadow-lg transition-all hover:scale-105 hover:shadow-[0_8px_30px_rgba(85,9,217,0.35)] border-0"
+                className="flex-1 rounded-full px-4 h-12 sm:h-14 text-sm sm:text-base font-semibold text-white shadow-lg transition-all hover:scale-105 hover:shadow-[0_8px_30px_rgba(85,9,217,0.35)] border-0"
                 style={{ background: "linear-gradient(135deg, #5509D9, #7134F1)" }}
               >
-                <a href="https://play.google.com/store/apps/details?id=com.zahed.flowllet" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                <a href="https://play.google.com/store/apps/details?id=com.zahed.flowllet" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full">
                   <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current shrink-0"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.396 13l2.302-2.492zM5.864 2.658L16.8 9.99l-2.302 2.302-8.635-8.635z"/></svg>
                   Google Play
-                  <ArrowRight className="w-4 h-4" />
                 </a>
               </Button>
 
               <div
-                className="relative group rounded-full px-8 py-4 text-base font-semibold border border-gray-200 bg-white text-slate-900 cursor-not-allowed overflow-hidden flex items-center gap-2 select-none shadow-sm"
+                className="flex-1 relative group rounded-full px-4 h-12 sm:h-14 text-sm sm:text-base font-semibold border border-gray-200 bg-white text-slate-900 cursor-not-allowed overflow-hidden flex items-center justify-center gap-2 select-none shadow-sm whitespace-nowrap"
               >
                 {/* Premium Coming Soon overlay */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-full z-10 overflow-hidden">
@@ -160,21 +158,22 @@ const Hero = () => {
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-60" />
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-white" />
                     </span>
-                    <span className="text-sm font-black text-white tracking-widest uppercase">Coming Soon</span>
+                    <span className="text-xs font-black text-white tracking-wide uppercase">Coming Soon</span>
                   </div>
                 </div>
                 <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current shrink-0"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                 App Store
+                <ArrowRight className="w-4 h-4 opacity-0" />
               </div>
             </motion.div>
 
             {/* Stats strip */}
             <motion.div
               {...fadeUp(0.36)}
-              className="grid grid-cols-4 gap-6 sm:gap-8 mt-12 w-full max-w-md"
+              className="grid grid-cols-4 gap-6 sm:gap-8 mt-12 w-full max-w-md mx-auto"
             >
               {STATS.map(({ value, label }) => (
-                <div key={label} className="flex flex-col items-start">
+                <div key={label} className="flex flex-col items-center text-center">
                   <span
                     className="font-heading font-black text-xl sm:text-2xl bg-clip-text text-transparent"
                     style={{ backgroundImage: "linear-gradient(135deg, #5509D9, #7134F1)" }}
@@ -291,7 +290,7 @@ const Hero = () => {
                   className={`absolute ${pos} z-20`}
                 >
                   <div className="animate-float w-full h-full" style={{ animationDelay: `${i * 0.4}s` }}>
-                    <div className="bg-white rounded-2xl shadow-[0_12px_40px_rgba(0,0,0,0.1)] border border-gray-100 px-3 py-2.5 flex items-center gap-3 min-w-[130px] sm:min-w-[150px] hover:scale-105 transition-transform cursor-default group">
+                    <div className="bg-white/70 backdrop-blur-md rounded-2xl shadow-[0_12px_40px_rgba(0,0,0,0.1)] border border-gray-100/30 px-3 py-2.5 flex items-center gap-3 min-w-[130px] sm:min-w-[150px] hover:scale-105 transition-transform cursor-default group">
                       <div className={`w-8 h-8 rounded-xl bg-gradient-to-br ${color} flex items-center justify-center shrink-0 group-hover:rotate-12 transition-transform`}>
                         <Icon className="w-4 h-4 text-white" />
                       </div>

@@ -24,7 +24,7 @@ import {
 interface Screen {
   id: string;
   title: string;
-  icon: any;
+  icon: React.ElementType;
   color: string;
   description: string;
 }
@@ -333,9 +333,9 @@ const AppScreenshots = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section ref={ref} className="py-24 lg:py-32 bg-[#fcfaff] relative overflow-hidden">
+    <section ref={ref} className="py-16 lg:py-32 bg-[#fcfaff] relative overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 lg:px-20 xl:px-32 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
           
           {/* ── LEFT: Content & Switcher ── */}
           <motion.div
@@ -359,12 +359,12 @@ const AppScreenshots = () => {
               Clean, minimalist, and built for humans. Experience a financial app that feels as good as it looks.
             </p>
 
-            <div className="mt-10 space-y-3">
+            <div className="mt-8 lg:mt-10 flex flex-row lg:flex-col gap-3 lg:space-y-3 lg:gap-0 overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 snap-x hide-scrollbar scroll-smooth -mx-6 px-6 lg:mx-0 lg:px-0">
               {screens.map((screen) => (
                 <button
                   key={screen.id}
                   onClick={() => setActiveScreen(screen.id)}
-                  className={`w-full text-left p-4 rounded-2xl border transition-all duration-300 group flex items-start gap-4 ${
+                  className={`w-[260px] lg:w-full shrink-0 text-left p-4 rounded-2xl border transition-all duration-300 group flex items-start gap-4 snap-center lg:snap-align-none ${
                     activeScreen === screen.id 
                     ? "bg-white border-primary/20 shadow-lg" 
                     : "bg-transparent border-transparent hover:bg-white/50"

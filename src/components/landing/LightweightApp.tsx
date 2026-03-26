@@ -30,7 +30,7 @@ const LightweightApp = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section ref={ref} className="py-24 lg:py-32 relative overflow-hidden">
+    <section ref={ref} className="py-16 lg:py-32 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 bg-gradient-to-b from-white via-[#fcfaff] to-white pointer-events-none" />
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />

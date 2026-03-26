@@ -11,7 +11,7 @@ const FinancialReports = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section ref={ref} className="py-24 relative overflow-hidden lg:py-32">
+    <section ref={ref} className="py-16 relative overflow-hidden lg:py-32">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-bl from-white via-[#fcfaff] to-[#f4f0ff] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-[#5509D9]/5 blur-[120px] pointer-events-none" />

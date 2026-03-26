@@ -14,7 +14,7 @@ const DownloadCTA = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="download" ref={ref} className="py-24 lg:py-40 relative overflow-hidden bg-[#0a0118]">
+    <section id="download" ref={ref} className="py-16 lg:py-40 relative overflow-hidden bg-[#0a0118]">
       {/* ── BACKGROUND: Deep Animated Mesh ── */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] rounded-full bg-primary/20 blur-[180px] animate-pulse-slow" />
@@ -92,7 +92,7 @@ const DownloadCTA = () => {
             </div>
 
             {/* Trust Markers */}
-            <div className="mt-12 flex flex-wrap gap-8">
+            <div className="mt-12 mb-20 lg:mb-0 flex flex-nowrap overflow-x-auto hide-scrollbar gap-6 sm:gap-8 pb-1">
               {[
                 { icon: Zap, text: "Under 15MB" },
                 { icon: Cloud, text: "Cloud Sync" },
@@ -113,7 +113,7 @@ const DownloadCTA = () => {
             initial={{ opacity: 0, y: 100, rotate: 5, scale: 0.8 }}
             animate={isVisible ? { opacity: 1, y: 0, rotate: -12, scale: 1 } : {}}
             transition={{ duration: 1.2, ease: "easeOut" }}
-            className="relative lg:col-span-5 flex justify-center lg:block"
+            className="relative lg:col-span-5 hidden lg:block"
           >
             {/* Elegant Phone Mockup (Peek-a-boo) */}
             <div className="relative w-[240px] sm:w-[280px] h-[480px] sm:h-[580px] bg-slate-900 rounded-[35px] sm:rounded-[45px] border-[5px] sm:border-[6px] border-slate-800 shadow-[15px_30px_60px_rgba(0,0,0,0.5)] overflow-hidden">
@@ -170,7 +170,7 @@ const DownloadCTA = () => {
       </div>
 
       {/* ── Footer Fade ── */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-background to-transparent pointer-events-none" />
     </section>
   );
 };

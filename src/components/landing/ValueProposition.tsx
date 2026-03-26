@@ -30,7 +30,7 @@ const ValueProposition = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="features" ref={ref} className="py-20 relative overflow-hidden lg:py-24 lg:flex lg:flex-col lg:justify-center">
+    <section id="features" ref={ref} className="py-16 relative overflow-hidden lg:py-24 lg:flex lg:flex-col lg:justify-center">
       {/* subtle background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-white via-[#f8f5ff] to-white pointer-events-none" />
 
