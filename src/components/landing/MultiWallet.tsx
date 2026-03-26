@@ -67,7 +67,7 @@ const MultiWallet = () => {
     <section 
       id="wallet" 
       ref={ref} 
-      className="py-16 lg:py-32 relative overflow-hidden group/section"
+      className="py-16 lg:py-32 relative overflow-hidden group/section z-0"
       onMouseLeave={() => setIsLocked(true)}
     >
       {/* Background blobs (always visible behind all) */}
@@ -83,7 +83,7 @@ const MultiWallet = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="absolute inset-x-0 top-[200px] lg:top-[280px] z-50 flex items-center justify-center pointer-events-none"
+            className="absolute inset-x-0 top-[300px] lg:top-[450px] z-10 flex items-center justify-center pointer-events-none"
           >
             {/* Diagonal Ribbon Wrapper - Postioned beneath the badge */}
             <div 
@@ -142,7 +142,7 @@ const MultiWallet = () => {
       <div className="container mx-auto px-6 md:px-12 lg:px-20 xl:px-32 relative z-10">
         
         {/* ── VISIBLE HEADER PART (Badge) ── */}
-        <div className="flex justify-center mb-10 pt-4 relative z-[60]">
+        <div className="flex justify-center mb-10 pt-4 relative z-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
