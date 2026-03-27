@@ -104,7 +104,7 @@ const LoanTracking = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.8 }}
-              className="mt-10 flex flex-row flex-wrap justify-center lg:justify-start gap-8 md:gap-12"
+              className="mt-10 grid grid-cols-2 lg:flex lg:flex-row lg:justify-start gap-4 md:gap-12"
             >
               {[
                 { label: "Avg. repaid", value: "94%", sub: "on time" },

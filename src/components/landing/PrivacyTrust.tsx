@@ -74,38 +74,38 @@ const PrivacyTrust = () => {
                     <p className="text-sm text-slate-500 font-medium tracking-tight px-4">Privacy First Architecture</p>
                   </div>
                   
-                  {/* Status indicators */}
-                  <div className="w-full space-y-3">
-                    {[
-                      { label: "Data Encryption", status: "Active", icon: Lock },
-                      { label: "Personal Privacy", status: "Protected", icon: Fingerprint },
-                      { label: "System Reliability", status: "Syscomatic Trusted", icon: Server }
-                    ].map((item, idx) => (
-                      <div key={item.label} className="flex items-center justify-between p-3.5 rounded-2xl bg-slate-50/50 border border-slate-100">
-                        <div className="flex items-center gap-3">
-                          <item.icon className="w-4 h-4 text-primary" />
-                          <span className="text-xs font-bold text-slate-700">{item.label}</span>
+                    {/* Status indicators */}
+                    <div className="w-full space-y-3">
+                      {[
+                        { label: "Data Encryption", status: "Active", icon: Lock },
+                        { label: "Personal Privacy", status: "Protected", icon: Fingerprint },
+                        { label: "System Reliability", status: "Syscomatic Trusted", icon: Server }
+                      ].map((item, idx) => (
+                        <div key={item.label} className="flex items-center justify-between w-full p-4 rounded-2xl bg-slate-50/50 border border-slate-100 transition-all hover:bg-white hover:shadow-sm">
+                          <div className="flex items-center gap-3">
+                            <item.icon className="w-4 h-4 text-primary" />
+                            <span className="text-[11px] sm:text-xs font-bold text-slate-700 leading-none">{item.label}</span>
+                          </div>
+                          <div className="flex items-center gap-1.5 shrink-0 ml-4">
+                            <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                            <span className="text-[9px] sm:text-[10px] font-black text-emerald-600 uppercase tracking-widest leading-none">{item.status}</span>
+                          </div>
                         </div>
-                        <div className="flex items-center gap-1.5">
-                          <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                          <span className="text-[10px] font-black text-emerald-600 uppercase tracking-widest">{item.status}</span>
-                        </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              {/* Decorative elements */}
-              <div className="absolute -top-10 -right-10 w-32 h-32 bg-accent/10 rounded-full blur-[50px] animate-bounce-slow" />
-              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-[60px] animate-pulse" />
-              
-              {/* Floating ID badge */}
-              <motion.div 
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -right-8 top-1/4 z-30 bg-white p-3 rounded-2xl shadow-xl border border-slate-50 flex items-center gap-3"
-              >
+  
+                {/* Decorative elements */}
+                <div className="absolute -top-10 -right-10 w-32 h-32 bg-accent/10 rounded-full blur-[50px] animate-bounce-slow" />
+                <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-[60px] animate-pulse" />
+                
+                {/* Floating ID badge */}
+                <motion.div 
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute right-4 sm:-right-8 top-1/4 z-30 bg-white p-3 rounded-2xl shadow-xl border border-slate-50 flex items-center gap-3 whitespace-nowrap"
+                >
                 <div className="w-8 h-8 rounded-lg bg-emerald-100 flex items-center justify-center text-emerald-600">
                   <Verified className="w-5 h-5" />
                 </div>

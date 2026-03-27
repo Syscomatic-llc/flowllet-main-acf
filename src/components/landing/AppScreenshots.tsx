@@ -333,7 +333,7 @@ const AppScreenshots = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section ref={ref} className="py-16 lg:py-32 bg-[#fcfaff] relative overflow-hidden">
+    <section id="app-interface" ref={ref} className="py-16 lg:py-32 bg-[#fcfaff] relative overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 lg:px-20 xl:px-32 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
           

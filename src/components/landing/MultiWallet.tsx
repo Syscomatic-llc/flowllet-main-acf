@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import {
   Wallet, CreditCard, Building2, Smartphone, PiggyBank,
-  ArrowRight, ArrowLeftRight, TrendingUp,
+  ArrowRight, ArrowLeftRight, TrendingUp, Zap,
 } from "lucide-react";
 
 const wallets = [
@@ -61,21 +61,29 @@ const wallets = [
 
 const MultiWallet = () => {
   const { ref, isVisible } = useScrollAnimation();
+  const isInView = useInView(ref, { amount: 0.1 });
   const [isLocked, setIsLocked] = useState(true);
 
+  // Auto-lock when scrolling away
+  useEffect(() => {
+    if (!isInView) {
+      setIsLocked(true);
+    }
+  }, [isInView]);
+
   return (
-    <section 
-      id="wallet" 
-      ref={ref} 
+    <section
+      id="wallet"
+      ref={ref}
       className="py-16 lg:py-32 relative overflow-hidden group/section z-0"
       onMouseLeave={() => setIsLocked(true)}
     >
-      {/* Background blobs (always visible behind all) */}
+      {/* Background (always visible behind all) */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#f8f5ff] via-white to-[#f8f5ff] pointer-events-none" />
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#7134F1]/6 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#5509D9]/5 rounded-full blur-[100px] pointer-events-none" />
 
-      {/* Coming Soon Overlay Layer (Ribbon + Blur Trigger) */}
+      {/* Coming Soon Layer */}
       <AnimatePresence>
         {isLocked && (
           <motion.div
@@ -83,56 +91,90 @@ const MultiWallet = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="absolute inset-x-0 top-[300px] lg:top-[450px] z-10 flex items-center justify-center pointer-events-none"
+            className="absolute inset-x-0 inset-y-0 z-30 flex items-start justify-center pt-48 lg:pt-64 pointer-events-none"
           >
-            {/* Diagonal Ribbon Wrapper - Postioned beneath the badge */}
-            <div 
-              className="relative z-20 pointer-events-auto cursor-pointer touch-manipulation flex flex-col items-center gap-6 sm:gap-8"
-              onMouseEnter={() => setIsLocked(false)}
-              onClick={() => setIsLocked(false)}
+            {/* Interactive Wrapper */}
+            <div
+              className="relative z-40 pointer-events-auto cursor-pointer flex flex-col items-center gap-4 select-none"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsLocked(false);
+              }}
             >
-              {/* Outer glow effect */}
+              {/* Ultra-glow background */}
               <motion.div
-                animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.6, 0.3] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute inset-x-0 -inset-y-4 bg-[#7134F1]/30 blur-3xl -z-10"
+                animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.5, 0.3] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute inset-0 bg-[#7134F1] blur-[140px] -z-10"
               />
 
+              {/* Main Badge */}
               <motion.div
-                initial={{ scale: 0.8, opacity: 0, rotate: -3 }}
-                animate={{ scale: 1, opacity: 1, rotate: -3 }}
-                whileHover={{ scale: 1.05, rotate: 0 }}
-                whileTap={{ scale: 0.95 }}
-                className="relative bg-gradient-to-br from-[#5509D9] via-[#7134F1] to-[#380791] shadow-[0_20px_60px_rgba(85,9,217,0.4)] px-8 sm:px-16 py-3 sm:py-4 rounded-xl sm:rounded-2xl border-2 border-white/30 overflow-hidden group/ribbon mx-4 sm:mx-0"
+                initial={{ scale: 0.8, opacity: 0, rotate: -2 }}
+                animate={{ 
+                  scale: 1, 
+                  opacity: 1, 
+                  rotate: -2,
+                  y: [0, -18, 0]
+                }}
+                transition={{
+                  scale: { duration: 0.6 },
+                  opacity: { duration: 0.6 },
+                  y: { duration: 2.4, repeat: Infinity, ease: "easeInOut" }
+                }}
+                whileHover={{ 
+                  scale: 1.05, 
+                  rotate: 0, 
+                  y: -10, 
+                  transition: { duration: 0.3, repeat: 0, ease: "easeOut" } 
+                }}
+                className="relative bg-gradient-to-br from-[#5509D9] via-[#7134F1] to-[#380791] shadow-[0_30px_90px_rgba(85,9,217,0.6)] px-10 sm:px-20 py-4 sm:py-6 rounded-2xl sm:rounded-3xl border border-white/40 overflow-hidden group/ribbon mx-4 sm:mx-0"
               >
-                {/* Shiny effect on ribbon */}
-                <motion.div 
-                  animate={{ x: ['-100%', '200%'] }}
-                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12"
+                {/* Shiny effect - Fixed version (narrower band) */}
+                <motion.div
+                  animate={{ left: ['-150%', '200%'] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", repeatDelay: 1 }}
+                  className="absolute top-0 bottom-0 w-32 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-[-25deg]"
                 />
-                
-                <span className="relative z-10 flex items-center gap-3 sm:gap-4 text-white">
-                  <span className="flex h-2 w-2 sm:h-3 sm:w-3 rounded-full bg-white animate-pulse" />
-                  <span className="font-heading font-black text-xl sm:text-3xl tracking-[0.1em] sm:tracking-[0.15em] uppercase drop-shadow-lg whitespace-nowrap">
+
+                <span className="relative z-10 flex items-center gap-4 sm:gap-6 text-white/90">
+                  <span className="flex h-4 w-[2px] bg-white/30 rounded-full" />
+                  <span className="font-heading font-black text-2xl sm:text-4xl tracking-[0.12em] sm:tracking-[0.18em] uppercase drop-shadow-2xl whitespace-nowrap">
                     Coming Soon
                   </span>
-                  <span className="flex h-2 w-2 sm:h-3 sm:w-3 rounded-full bg-white animate-pulse" />
+                  <span className="flex h-4 w-[2px] bg-white/30 rounded-full" />
                 </span>
-                
-                {/* Micro-sparkle icons */}
-                <div className="absolute top-2 right-4 opacity-50">✨</div>
-                <div className="absolute bottom-2 left-4 opacity-50 rotate-12">✨</div>
+
+                {/* Symmetric pulsing ember dots */}
+                <motion.div
+                  className="absolute top-1/2 -translate-y-1/2 left-6 flex items-center justify-center opacity-70"
+                >
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-400" />
+                  </span>
+                </motion.div>
+                <motion.div
+                  className="absolute top-1/2 -translate-y-1/2 right-6 flex items-center justify-center opacity-70"
+                >
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-400" />
+                  </span>
+                </motion.div>
               </motion.div>
 
-              {/* Decorative "Status" message beneath the label */}
-              <motion.div 
-                animate={{ y: [0, 5, 0], opacity: [0.6, 1, 0.6] }}
-                transition={{ duration: 3, repeat: Infinity }}
-                className="whitespace-nowrap text-[10px] sm:text-sm font-bold text-[#5509D9] uppercase tracking-widest px-4 py-1.5 rounded-full bg-white/60 backdrop-blur-md border border-[#5509D9]/20 shadow-sm"
+              {/* Interaction Indicator */}
+              <motion.div
+                animate={{ opacity: [0.8, 1, 0.8] }}
+                transition={{ duration: 2.5, repeat: Infinity }}
+                className="group/indicator flex flex-col items-center gap-3"
               >
-                <span className="hidden sm:inline">Hover to Preview</span>
-                <span className="sm:hidden">Tap to Preview</span>
+                <div className="whitespace-nowrap text-[10px] sm:text-xs font-black text-[#5509D9] uppercase tracking-[0.3em] px-8 py-3 rounded-full bg-white backdrop-blur-md border border-[#5509D9]/30 shadow-[0_10px_30px_rgba(85,9,217,0.15)] group-hover/indicator:scale-105 transition-transform duration-300">
+                  <span className="hidden sm:inline">Click to Unlock Preview</span>
+                  <span className="sm:hidden">Tap to Unlock Preview</span>
+                </div>
+                <div className="w-px h-[30px] bg-gradient-to-b from-[#5509D9] to-transparent" />
               </motion.div>
             </div>
           </motion.div>
@@ -140,7 +182,7 @@ const MultiWallet = () => {
       </AnimatePresence>
 
       <div className="container mx-auto px-6 md:px-12 lg:px-20 xl:px-32 relative z-10">
-        
+
         {/* ── VISIBLE HEADER PART (Badge) ── */}
         <div className="flex justify-center mb-10 pt-4 relative z-20">
           <motion.div
@@ -159,24 +201,22 @@ const MultiWallet = () => {
 
         {/* ── BLURRED/LOCKED CONTENT START ── */}
         <div className={`transition-all duration-700 ${isLocked ? 'blur-[12px] grayscale-[0.5] opacity-80 pointer-events-none' : 'blur-0 grayscale-0 opacity-100'}`}>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-center max-w-2xl mx-auto mb-14"
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-5xl mx-auto mb-14"
           >
-            <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight">
-              All Your Wallets,{" "}
-              <span
+            <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight lg:whitespace-nowrap">
+              All Your Wallets,{" "}<span
                 className="bg-clip-text text-transparent"
                 style={{ backgroundImage: "linear-gradient(135deg, #5509D9, #7134F1)" }}
-              >
-                Plus Your Own
+              >Plus Your Own
               </span>
             </h2>
             <p className="text-gray-500 mt-4 text-lg leading-relaxed">
-              <span className="font-flowllet">Flowllet</span> tracks it all, cash, cards, banks, and savings. Plus, create your own 
+              <span className="font-flowllet">Flowllet</span> tracks it all, cash, cards, banks, and savings. Plus, create your own
               <span className="text-[#5509D9] font-bold"> custom wallets</span> for crypto, specialized assets, or anything else you track.
             </p>
           </motion.div>
