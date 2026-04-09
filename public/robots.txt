@@ -1,4 +1,4 @@
-# Search Engines & AI Bots
+# All Search Engines & AI Bots
 
 User-agent: *
 Allow: /
