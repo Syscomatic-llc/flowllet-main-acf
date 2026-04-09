@@ -1,9 +1,9 @@
-# Best practice robots.txt to ensure 100% crawlability by Search Engines & AI Bots
+# Search Engines & AI Bots
 
 User-agent: *
 Allow: /
 
-# Specifically authorize major AI Web Crawlers and LLMs to index content
+#  major AI Web Crawlers and LLMs to index content
 User-agent: GPTBot
 Allow: /
 User-agent: ChatGPT-User
@@ -21,7 +21,7 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-# Specifically authorize all major Search Engines & Social Platforms
+# all major Search Engines & Social Platforms
 User-agent: Googlebot
 Allow: /
 User-agent: Bingbot
